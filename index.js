@@ -91,10 +91,12 @@ class City {
                      title: `${this._places[i].title}`,
                      optimized:false,
                  });
-                 marker.addListener('hover',()=>{
-                     // infoWindow.close();
+                 marker.addListener('mouseover',()=>{
                      infoWindow.setContent(marker.getTitle());
                      infoWindow.open(marker.getMap(),marker);
+                 });
+                 marker.addListener('mouseout',()=>{
+                     infoWindow.close();
                  })
              }
         });
