@@ -152,27 +152,33 @@ class City {
         // get places to show from google maps api, and put markers on them
         let service=new google.maps.places.PlacesService(this.#_map);
         service.nearbySearch(request,(results,status)=>{
-            for (let i=0;i<City.#numberOfPlacesToShow;i++){
-                const marker=new google.maps.Marker({
-                    position:results[i].geometry.location,
-                    map: this.#_map,
-                    title:  `${results[i].name}`,
-                    optimized:false,
-                });
+            if (status===google.maps.places.PlacesServiceStatus.OK){
+                for (let i=0;i<City.#numberOfPlacesToShow;i++){
+                    const marker=new google.maps.Marker({
+                        position:results[i].geometry.location,
+                        map: this.#_map,
+                        title:  `${results[i].name}`,
+                        optimized:false,
+                    });
 
-                // make the information window to show when the mouse is on the marker
-                marker.addListener('mouseover',()=>{
-                    let info=document.createElement("h4");
-                    info.innerHTML=marker.getTitle();
-                    infoWindow.setContent(info);
-                    infoWindow.open(marker.getMap(),marker);
-                });
+                    // make the information window to show when the mouse is on the marker
+                    marker.addListener('mouseover',()=>{
+                        let info=document.createElement("h4");
+                        info.innerHTML=marker.getTitle();
+                        infoWindow.setContent(info);
+                        infoWindow.open(marker.getMap(),marker);
+                    });
 
-                // hide the information window when the mouse move from the marker
-                marker.addListener('mouseout',()=>{
-                    infoWindow.close();
-                })
+                    // hide the information window when the mouse move from the marker
+                    marker.addListener('mouseout',()=>{
+                        infoWindow.close();
+                    })
+                }
+
+            }else {
+                alert('problem with finding places. try again later');
             }
+
         });
     }
 }
