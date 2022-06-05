@@ -205,7 +205,7 @@ function main(){
     const jerusalemDescription='עיר הבירה של מדינת ישראל והעיר הגדולה ביותר בישראל בגודל האוכלוסייה';
     const bostonDescription='עיר הבירה של מדינת מסצ\'וסטס שבארצות הברית והעיר הגדולה ביותר בה' ;
     const lisbonDescription='עיר הבירה של פורטוגל והמרכז הכלכלי והתרבותי החשוב במדינה';
-    const londonDescription='עיר הבירה של אנגליה ושל הממלכה המאוחדת והעיר הדולה ביותר בממלכה';
+    const londonDescription='עיר הבירה של אנגליה ושל הממלכה המאוחדת והעיר הגדולה ביותר בממלכה';
 
     // city objects to show
     let cities=[
