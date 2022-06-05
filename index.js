@@ -121,25 +121,33 @@ class City {
 }
 
 
+function showCities(cities) {
+    let cityList=document.getElementById('cityLst');
+    for (let city of cities){
+        cityList.appendChild(city.asHtml);
+    }
+}
+
 function main(){
+    // city image sources
     const jerusalemImgSrc='images/jerusalem.jpg';
     const bostonImgSrc='images/boston.jpg';
     const londonImgSrc='images/london.jpg';
     const lisbonImgSrc='images/lisbon.jpg';
 
+    // city descriptions
     const jerusalemDescription='עיר הבירה של מדינת ישראל והעיר הגדולה ביותר בישראל בגודל האוכלוסייה';
     const bostonDescription='עיר הבירה של מדינת מסצ\'וסטס שבארצות הברית והעיר הגדולה ביותר בה' ;
     const lisbonDescription='עיר הבירה של פורטוגל והמרכז הכלכלי והתרבותי החשוב במדינה';
     const londonDescription='עיר הבירה של אנגליה ושל הממלכה המאוחדת והעיר הדולה ביותר בממלכה';
 
-    const jerusalem=new City('ירושלים',jerusalemImgSrc,jerusalemDescription,{ lat: 31.771959, lng: 35.217018 });
-    const boston=new City('בוסטון',bostonImgSrc,bostonDescription,{ lat: 42.361145, lng: -71.057083 });
-    const lisbon=new City('ליסבון',lisbonImgSrc,lisbonDescription,{ lat: 38.736946, lng: -9.142685 });
-    const london=new City('לונדון',londonImgSrc,londonDescription,{ lat: 51.509865, lng: -0.118092 });
+    // city objects to show
+    let cities=[
+        new City('ירושלים',jerusalemImgSrc,jerusalemDescription,{ lat: 31.771959, lng: 35.217018 }),
+        new City('בוסטון',bostonImgSrc,bostonDescription,{ lat: 42.361145, lng: -71.057083 }),
+        new City('ליסבון',lisbonImgSrc,lisbonDescription,{ lat: 38.736946, lng: -9.142685 }),
+        new City('לונדון',londonImgSrc,londonDescription,{ lat: 51.509865, lng: -0.118092 })
+    ];
 
-    let cityList=document.getElementById('cityLst');
-    cityList.appendChild(jerusalem.asHtml);
-    cityList.appendChild(boston.asHtml);
-    cityList.appendChild(lisbon.asHtml);
-    cityList.appendChild(london.asHtml);
+    showCities(cities);
 }
