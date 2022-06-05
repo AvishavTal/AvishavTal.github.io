@@ -88,7 +88,7 @@ class City {
                  const marker=new google.maps.Marker({
                      position:this._places[i].location,
                      map: this._map,
-                     title: `${this._places[i].title}`,
+                     title: `${this._places[i].description}`,
                      optimized:false,
                  });
                  marker.addListener('mouseover',()=>{
@@ -107,6 +107,19 @@ class City {
     }
 }
 
+class SpotOfInterest{
+    constructor(location,description) {
+        this._location=location;
+        this._description=description;
+    }
+    get location(){
+        return this._location;
+    }
+    get description(){
+        return this._description;
+    }
+}
+
 function main(){
     const westernWall= {lat: 52.535152,lng:13.390206};
     const machneYudaMarket={lat:31.7845173254,lng:35.2124510205};
@@ -117,6 +130,13 @@ function main(){
     const bunkerHillMonument={location:{lat:42.376352,lng:-71.060767},title:'Bunker Hill Monument'};
     const bostonOperaHouse={location:{lat:42.354253,lng:-71.062817},title:'Boston Opera House'};
     const bostonPlaces=[bostonEncoreHarbor,bostonLoganAirport,bunkerHillMonument,bostonOperaHouse];
+
+    const bostonSpotsOfInterest=[
+        new SpotOfInterest({lat:42.366978,lng:-71.022362},'נמל תעופה לוגאן'),
+        new SpotOfInterest({lat:42.395528,lng:-71.069333},'Encore Boston Harbor'),
+        new SpotOfInterest({lat:42.376352,lng:-71.060767},'Bunker Hill Monument'),
+        new SpotOfInterest({lat:42.354253,lng:-71.062817},'Boston Opera House')
+    ]
 
     const jerusalemImgSrc='images/jerusalem.jpg';
     const bostonImgSrc='images/boston.jpg';
@@ -129,7 +149,7 @@ function main(){
     const londonDescription='עיר הבירה של אנגליה ושל הממלכה המאוחדת והעיר הדולה ביותר בממלכה';
 
     const jerusalem=new City('ירושלים',jerusalemImgSrc,jerusalemDescription,{ lat: 31.771959, lng: 35.217018 },jerusalemPlaces);
-    const boston=new City('בוסטון',bostonImgSrc,bostonDescription,{ lat: 42.361145, lng: -71.057083 },bostonPlaces);
+    const boston=new City('בוסטון',bostonImgSrc,bostonDescription,{ lat: 42.361145, lng: -71.057083 },bostonSpotsOfInterest);
     const lisbon=new City('ליסבון',lisbonImgSrc,lisbonDescription,{ lat: 38.736946, lng: -9.142685 });
     const london=new City('לונדון',londonImgSrc,londonDescription,{ lat: 51.509865, lng: -0.118092 });
 
