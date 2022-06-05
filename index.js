@@ -3,7 +3,7 @@
  */
 class CityName{
     static #cssCalss='city-name';
-    static #tagName='p';
+    static #tagName='h4';
     #_name;
     #_html;
     constructor(name) {
